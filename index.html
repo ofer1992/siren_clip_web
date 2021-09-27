@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h1>The select element</h1>
+
+<p>The select element is used to create a drop-down list.</p>
+
+<label for="p">augmentation probability:</label>
+<select name="p" id="p">
+  <option value=0.4>0.4</option>
+  <option value=0.8>0.8</option>
+  <option value=1>1</option>
+</select>
+<br>
+<label for="bs">batch size:</label>
+<select name="bs" id="bs">
+  <option value=1>1</option>
+  <option value=4>4</option>
+  <option value=16>16</option>
+</select>
+<br>
+<label for="lr">learning rate:</label>
+<select name="lr" id="lr">
+  <option value=1e-07>1e-07</option>
+  <option value=1e-06>1e-06</option>
+  <option value=3e-06>3e-06</option>
+</select>
+<br><br>
+
+<div id="table">
+</div>
+
+<script>
+function images() {
+  let prompts = ['obama smiling',
+                 'obama crying',
+                 'obama with glasses',
+                 'obama with blonde hair',
+                 'obama as an old man',
+                 'obama with clown makeup',
+                 'obama wearing a hat on his head',
+                 'obama if he were a girl',
+                 'obama looking at the camera'
+                 ];
+  $("#table").empty();
+  prompts.forEach((prompt) => {
+    let p = $("#p").val();
+    let bs = $("#bs").val();
+    let lr = $("#lr").val();
+    let iters = [100, 300, 1000];
+    $("#table").append(`<label>${prompt}</label>`);
+    iters.forEach(it => $("#table").append(`<img src="./p=${p}_lr=${lr}_bs=${bs}/${prompt}/${it}.jpg"></img>`));
+    $("#table").append("<br>");
+  });
+}
+images();
+$("#p").on("change", images);
+$("#lr").on("change", images);
+$("#bs").on("change", images);
+</script>
+
+</body>
+</html>
+
