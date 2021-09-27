@@ -54,7 +54,7 @@ function images() {
     let lr = $("#lr").val();
     let iters = [100, 300, 1000];
     $("#table").append(`<label>${prompt}</label>`);
-    iters.forEach(it => $("#table").append(`<img src="p=${p}_lr=${lr}_bs=${bs}/${prompt}/${it}.jpg"></img>`));
+    iters.forEach(it => $("#table").append(`<img src="/siren_clip_web/p=${p}_lr=${lr}_bs=${bs}/${prompt}/${it}.jpg"></img>`));
     $("#table").append("<br>");
   });
 }
